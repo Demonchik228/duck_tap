@@ -1,0 +1,9 @@
+# При команде /start бот отправляет кнопку
+@bot.message_handler(commands=['start'])
+def start(message):
+    markup = types.InlineKeyboardMarkup()
+    # web_app указывает, что это Mini App
+    web_app = types.WebAppInfo(url="t.me/back_tap_bot")
+    button = types.InlineKeyboardButton("Тапать уточку 🦆", web_app=web_app)
+    markup.add(button)
+    bot.send_message(message.chat.id, "Жми на утку!", reply_markup=markup)
